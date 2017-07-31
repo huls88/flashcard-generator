@@ -7,32 +7,51 @@ var Basic = function(front, back) {
 
 var cards = [];
 
-var creatQuestion = function(){
-  if (cards.length < 3){
-    console.log("\nNew Card!\n");
+function firstPresident(){
+
+
 inquirer.prompt([
   {
     type: "input",
-    name: "question",
+    name: "president1",
     message: "Who was the first president of the United States?"
-
-  },
-  {
-    type: "input",
-    name: "question",
-    message: "Who was the second president of the United States?"
-  },
-  {
-    type: "input",
-    name: "question",
-    message: "Who was the third president of the United States?"
 
   }
 
-]).then(function(answers) {
-  console.log("answer");
+]).then(function(inquirerResponse) {
+  if (inquirerResponse.president1 === "George Washington"){
+    console.log("Correct!" );
+    beerQuestion();
+  } else {
+    console.log("The correct answer is George Washington");
+    beerQuestion();
+  }
 });
 }
-};
+firstPresident();
 
-module.exports = BasicCard;
+function beerQuestion(){
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "beer",
+      message: "What is the best type of beer?"
+
+    },
+
+
+]).then(function(inquirerResponse) {
+  if (inquirerResponse.beer === "Stout"){
+    console.log("Correct!" );
+    beerQuestion();
+  } else {
+    console.log("The correct answer is Stout");
+    beerQuestion();
+  }
+});
+}
+// beerQuestion();
+
+
+
+// module.exports = BasicCard;
